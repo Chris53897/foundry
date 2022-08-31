@@ -146,7 +146,7 @@ This command will generate a ``PostFactory`` class that looks like this:
     /**
      * @extends ModelFactory<Post>
      *
-     * @method static Post|Proxy createOne(array $attributes = [])
+     * @method static Post|Proxye(array $attributes = [])
      * @method static Post[]|Proxy[] createMany(int $number, array|callable $attributes = [])
      * @method static Post|Proxy find(object|array|mixed $criteria)
      * @method static Post|Proxy findOrCreate(array $attributes)
@@ -1143,7 +1143,7 @@ to have `Active Record <https://en.wikipedia.org/wiki/Active_record_pattern>`_ *
 
     use App\Factory\PostFactory;
 
-    $post = PostFactory::createOne()->create(['title' => 'My Title']); // instance of Zenstruck\Foundry\Proxy
+    $post = PostFactory::createOne(['title' => 'My Title']); // instance of Zenstruck\Foundry\Proxy
 
     // get the wrapped object
     $realPost = $post->object(); // instance of Post
