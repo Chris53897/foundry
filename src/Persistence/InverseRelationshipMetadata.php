@@ -21,7 +21,7 @@ final class InverseRelationshipMetadata
     public function __construct(
         public readonly string $inverseField,
         public readonly bool $isCollection,
-        public readonly string|null $collectionIndexedBy,
+        public readonly ?string $collectionIndexedBy,
     ) {
     }
 }

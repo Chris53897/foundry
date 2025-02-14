@@ -21,13 +21,12 @@ use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 use Zenstruck\Foundry\Tests\Fixture\DoctrineCascadeRelationship\ChangesEntityRelationshipCascadePersist;
 use Zenstruck\Foundry\Tests\Fixture\DoctrineCascadeRelationship\UsingRelationships;
-use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\IndexedOneToMany\Level1Factory;
+use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\IndexedOneToMany;
 use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\InversedOneToOneWithNonNullableOwning;
 use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\InversedOneToOneWithOneToMany;
 use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\InversedOneToOneWithSetter;
 use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\ManyToOneToSelfReferencing;
 use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\RichDomainMandatoryRelationship;
-use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\IndexedOneToMany;
 use Zenstruck\Foundry\Tests\Fixture\Factories\Entity\EdgeCases\MultipleMandatoryRelationshipToSameEntity;
 use Zenstruck\Foundry\Tests\Integration\RequiresORM;
 

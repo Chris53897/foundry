@@ -346,8 +346,8 @@ abstract class PersistentObjectFactory extends ObjectFactory
                 // if the collection is indexed by a field, index the array
                 if ($inverseRelationshipMetadata->collectionIndexedBy) {
                     $inverseObjects = \array_combine(
-                        array_map(static fn($o) => get($o, $inverseRelationshipMetadata->collectionIndexedBy), $inverseObjects),
-                        array_values($inverseObjects)
+                        \array_map(static fn($o) => get($o, $inverseRelationshipMetadata->collectionIndexedBy), $inverseObjects),
+                        \array_values($inverseObjects)
                     );
                 }
 
