@@ -21,6 +21,7 @@ use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 use Zenstruck\Foundry\Tests\Fixture\DoctrineCascadeRelationship\ChangesEntityRelationshipCascadePersist;
 use Zenstruck\Foundry\Tests\Fixture\DoctrineCascadeRelationship\UsingRelationships;
+use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\IndexedOneToMany;
 use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\InversedOneToOneWithNonNullableOwning;
 use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\InversedOneToOneWithOneToMany;
 use Zenstruck\Foundry\Tests\Fixture\Entity\EdgeCases\InversedOneToOneWithSetter;
@@ -133,6 +134,28 @@ final class EdgeCasesRelationshipTest extends KernelTestCase
 
         $owningSideFactory::assert()->count(1);
         $inverseSideFactory::assert()->count(1);
+    }
+
+    /** @test */
+    #[Test]
+    #[DataProvider('provideCascadeRelationshipsCombinations')]
+    #[UsingRelationships(IndexedOneToMany\ParentEntity::class, ['items'])]
+    #[RequiresPhpunit('^11.4')]
+    public function indexed_one_to_many(): void
+    {
+        $parentFactory = persistent_factory(IndexedOneToMany\ParentEntity::class);
+        $childFactory = persistent_factory(IndexedOneToMany\Child::class);
+
+        $parent = $parentFactory->create(
+            [
+                'items' => $childFactory->with(['language' => 'en', 'parent' => $parentFactory])->many(1),
+            ]
+        );
+
+        $parentFactory::assert()->count(1);
+        $childFactory::assert()->count(1);
+
+        self::assertNotNull($parent->getItems()->get('en')); // @phpstan-ignore argument.type
     }
 
     /**

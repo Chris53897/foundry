@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v2.3.4](https://github.com/zenstruck/foundry/releases/tag/v2.3.4)
+
+February 14th, 2025 - [v2.3.3...v2.3.4](https://github.com/zenstruck/foundry/compare/v2.3.3...v2.3.4)
+
+* ad8d72c fix: can index one to many relationships based on "indexBy" (#815) by @nikophil
+
 ## [v2.3.2](https://github.com/zenstruck/foundry/releases/tag/v2.3.2)
 
 February 1st, 2025 - [v2.3.1...v2.3.2](https://github.com/zenstruck/foundry/compare/v2.3.1...v2.3.2)
