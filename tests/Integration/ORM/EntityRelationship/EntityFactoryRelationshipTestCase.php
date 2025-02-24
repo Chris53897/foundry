@@ -410,8 +410,8 @@ abstract class EntityFactoryRelationshipTestCase extends KernelTestCase
             ->with(
                 [
                     'tags' => static::tagFactory()
-                        ->afterPersist(static function (Tag $tag) {$tag->setName('foobar');})
-                        ->many(1)
+                        ->afterPersist(static function(Tag $tag) {$tag->setName('foobar'); })
+                        ->many(1),
                 ]
             )
             ->create();
@@ -425,10 +425,10 @@ abstract class EntityFactoryRelationshipTestCase extends KernelTestCase
         $category = static::categoryFactory()
             ->with([
                 'contacts' => static::contactFactory()
-                    ->afterPersist(static function (Contact $contact) {
+                    ->afterPersist(static function(Contact $contact) {
                         $contact->setName('foobar');
                     })
-                    ->many(1)
+                    ->many(1),
             ])->create();
 
         self::assertEquals('foobar', $category->getContacts()[0]?->getName());
@@ -440,9 +440,9 @@ abstract class EntityFactoryRelationshipTestCase extends KernelTestCase
         $contact = static::contactFactory()
             ->with([
                 'category' => static::categoryFactory()
-                    ->afterPersist(static function (Category $category) {
+                    ->afterPersist(static function(Category $category) {
                         $category->setName('foobar');
-                    })
+                    }),
             ])->create();
 
         self::assertEquals('foobar', $contact->getCategory()?->getName());
@@ -454,7 +454,7 @@ abstract class EntityFactoryRelationshipTestCase extends KernelTestCase
         $contact = static::contactFactory()
             ->with([
                 'address' => static::addressFactory()
-                    ->afterPersist(static function (Address $address) {$address->setCity('foobar');})
+                    ->afterPersist(static function(Address $address) {$address->setCity('foobar'); }),
             ])->create();
 
         self::assertEquals('foobar', $contact->getAddress()->getCity());
@@ -466,7 +466,7 @@ abstract class EntityFactoryRelationshipTestCase extends KernelTestCase
         $address = static::addressFactory()
             ->with([
                 'contact' => static::contactFactory()
-                    ->afterPersist(static function (Contact $contact) {$contact->setName('foobar');})
+                    ->afterPersist(static function(Contact $contact) {$contact->setName('foobar'); }),
             ])->create();
 
         self::assertEquals('foobar', $address->getContact()?->getName());

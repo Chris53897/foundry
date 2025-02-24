@@ -91,7 +91,7 @@ final class PersistenceManager
     /**
      * @template T of object
      *
-     * @param T $object
+     * @param T                     $object
      * @param list<callable():void> $afterPersistCallbacks
      *
      * @return T
