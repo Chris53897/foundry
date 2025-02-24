@@ -43,7 +43,7 @@ final class Configuration
     /** @var \Closure():self|self|null */
     private static \Closure|self|null $instance = null;
 
-    private static int|null $fakerSeed = null;
+    private static ?int $fakerSeed = null;
 
     /**
      * @phpstan-param InstantiatorCallable $instantiator
@@ -55,16 +55,16 @@ final class Configuration
         public readonly StoryRegistry $stories,
         private readonly ?PersistenceManager $persistence = null,
         private readonly ?EventDispatcherInterface $eventDispatcher = null,
-        int|null $forcedFakerSeed = null,
+        ?int $forcedFakerSeed = null,
     ) {
         $this->faker->seed(self::fakerSeed($forcedFakerSeed));
 
         $this->instantiator = $instantiator;
     }
 
-    public static function fakerSeed(int|null $forcedFakerSeed = null): int
+    public static function fakerSeed(?int $forcedFakerSeed = null): int
     {
-        return self::$fakerSeed ??= ($forcedFakerSeed ?? random_int(0, 1000000));
+        return self::$fakerSeed ??= ($forcedFakerSeed ?? \random_int(0, 1000000));
     }
 
     public static function resetFakerSeed(): void

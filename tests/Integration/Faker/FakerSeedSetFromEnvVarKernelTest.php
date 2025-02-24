@@ -2,6 +2,15 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the zenstruck/foundry package.
+ *
+ * (c) Kevin Bond <kevinbond@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Zenstruck\Foundry\Tests\Integration\Faker;
 
 use PHPUnit\Framework\Attributes\Depends;
@@ -11,7 +20,6 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Foundry\Configuration;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
-use Zenstruck\Foundry\Tests\Fixture\Factories\Entity\Address\AddressFactory;
 
 /**
  * @author Nicolas PHILIPPE <nikophil@gmail.com>
@@ -20,7 +28,7 @@ use Zenstruck\Foundry\Tests\Fixture\Factories\Entity\Address\AddressFactory;
 #[RequiresPhpunit('>=11.0')]
 final class FakerSeedSetFromEnvVarKernelTest extends KernelTestCase
 {
-    use Factories, ResetDatabase, FakerTestTrait;
+    use Factories, FakerTestTrait, ResetDatabase;
 
     #[Test]
     public function faker_seed_can_be_set_by_environment_variable(): void
