@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [v2.3.5](https://github.com/zenstruck/foundry/releases/tag/v2.3.5)
+
+February 24th, 2025 - [v2.3.4...v2.3.5](https://github.com/zenstruck/foundry/compare/v2.3.4...v2.3.5)
+
+* fbf0981 fix: actually disable persistence cascade (#817) by @nikophil
+* 2426f3e fix: trigger after persist callbacks for entities scheduled for insert (#822) by @nikophil
+
 ## [v2.3.4](https://github.com/zenstruck/foundry/releases/tag/v2.3.4)
 
 February 14th, 2025 - [v2.3.3...v2.3.4](https://github.com/zenstruck/foundry/compare/v2.3.3...v2.3.4)
