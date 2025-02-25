@@ -274,6 +274,17 @@ abstract class PersistentObjectFactory extends ObjectFactory
         return Configuration::instance()->isPersistenceEnabled() ? $this->persist : PersistMode::WITHOUT_PERSISTING;
     }
 
+    final public function isPersisting(): bool
+    {
+        $config = Configuration::instance();
+
+        if (!$config->isPersistenceEnabled()) {
+            return false;
+        }
+
+        return $this->persistMode()->isPersisting();
+    }
+
     protected function normalizeParameter(string $field, mixed $value): mixed
     {
         if (!Configuration::instance()->isPersistenceAvailable()) {
@@ -386,17 +397,6 @@ abstract class PersistentObjectFactory extends ObjectFactory
         } catch (RefreshObjectFailed|VarExportLogicException) {
             return $object;
         }
-    }
-
-    final public function isPersisting(): bool
-    {
-        $config = Configuration::instance();
-
-        if (!$config->isPersistenceEnabled()) {
-            return false;
-        }
-
-        return $this->persistMode()->isPersisting();
     }
 
     final protected function initializeInternal(): static

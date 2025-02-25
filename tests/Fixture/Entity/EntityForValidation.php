@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Zenstruck\Foundry\Tests\Fixture\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zenstruck\Foundry\Tests\Fixture\Model\Base;
 use Symfony\Component\Validator\Constraints as Assert;
+use Zenstruck\Foundry\Tests\Fixture\Model\Base;
 
 #[ORM\Entity]
 class EntityForValidation extends Base

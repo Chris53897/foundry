@@ -99,9 +99,7 @@ final class ZenstruckFoundryBundle extends AbstractBundle implements CompilerPas
                             ->info('Automatically validate the objects created.')
                             ->canBeEnabled()
                             ->validate()
-                                ->ifTrue(function(array $validation): bool {
-                                    return $validation['enabled'] && !interface_exists(ValidatorInterface::class);
-                                })
+                                ->ifTrue(fn(array $validation): bool => $validation['enabled'] && !\interface_exists(ValidatorInterface::class))
                                 ->thenInvalid('Validation support cannot be enabled as the Validator component is not installed. Try running "composer require --dev symfony/validator".')
                             ->end()
                         ->end()
@@ -349,12 +347,12 @@ final class ZenstruckFoundryBundle extends AbstractBundle implements CompilerPas
         $container->getDefinition('.zenstruck_foundry.configuration')
             ->replaceArgument(8, $container->has('validator'));
 
-        if (!interface_exists(ValidatorInterface::class)) {
+        if (!\interface_exists(ValidatorInterface::class)) {
             $container->removeDefinition('.zenstruck_foundry.validation_listener');
         }
 
         if ($container->has('.zenstruck_foundry.configuration') && !$container->has('validator')) {
-            if ($container->getParameter('.zenstruck_foundry.validation_enabled') === true) {
+            if (true === $container->getParameter('.zenstruck_foundry.validation_enabled')) {
                 throw new LogicException('Validation support cannot be enabled because the validation is not enabled. Please, add enable validation with configuration "framework.validation: true".');
             }
 

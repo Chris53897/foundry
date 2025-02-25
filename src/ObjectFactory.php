@@ -134,7 +134,7 @@ abstract class ObjectFactory extends Factory
         $clone = clone $this;
         $clone->validationEnabled = true;
 
-        if ($groups !== null) {
+        if (null !== $groups) {
             $clone->validationGroups = $groups;
         }
 
