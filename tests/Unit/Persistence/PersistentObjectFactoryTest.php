@@ -82,7 +82,7 @@ final class PersistentObjectFactoryTest extends TestCase
                 [
                     'prop1' => 'foo',
                 ],
-            ])
+            ]),
         ];
     }
 }
