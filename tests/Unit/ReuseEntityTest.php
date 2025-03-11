@@ -138,8 +138,8 @@ final class ReuseEntityTest extends TestCase
         $category = CategoryFactory::createOne();
 
         $address = AddressFactory::new([
-                'contact' => ContactFactory::new()->reuse($category2 = CategoryFactory::createOne())
-            ])
+            'contact' => ContactFactory::new()->reuse($category2 = CategoryFactory::createOne()),
+        ])
             ->reuse($category)
             ->create();
 
